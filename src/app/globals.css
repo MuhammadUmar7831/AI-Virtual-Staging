@@ -6,8 +6,8 @@
 }
 
 @theme {
-  --color-bg-primary: #FDF9F5;
-  --color-bg-secondary: #2C2F40;
+  --color-primary: #FDF9F5;
+  --color-secondary: #2C2F40;
 }
 
 
@@ -15,3 +15,4 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
