@@ -4,18 +4,7 @@ import React from 'react'
 
 const WhyUs = () => {
     const clients = [
-        {
-            id: 1,
-            url: "/home/client1.jpg"
-        },
-        {
-            id: 2,
-            url: "/home/client2.jpg"
-        },
-        {
-            id: 3,
-            url: "/home/client3.jpg"
-        },
+        "/home/client1.jpg", "/home/client2.jpg", "/home/client3.jpg"
     ]
 
     return (
@@ -53,13 +42,13 @@ const WhyUs = () => {
                     </p>
                     <div className='flex justify-center items-center mt-4'>
                         <div className="flex justify-center items-center rounded-xl border border-dashed border-black px-5 py-2">
-                            {clients.map((logo, index) => (
+                            {clients.map((url, index) => (
                                 <Image
                                     key={index}
                                     className='rounded-full -ml-1'
                                     width={20}
                                     height={20}
-                                    src={logo.url}
+                                    src={url}
                                     alt='logo'
                                 />
                             ))}
