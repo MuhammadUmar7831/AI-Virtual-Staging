@@ -8,7 +8,7 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className="w-full px-6 lg:px-20 3xl:p-16">
+        <main className="w-full px-6 lg:px-20 3xl:p-16">
             <div className="relative h-[130vh] w-full rounded-3xl overflow-hidden">
 
                 {/* Full Background Image */}
@@ -93,7 +93,7 @@ const Banner = () => {
                     Try out <VectorWhite stroke='white' />
                 </button>
             </div>
-        </div>
+        </main>
     );
 };
 
