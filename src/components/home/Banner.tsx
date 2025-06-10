@@ -75,19 +75,6 @@ const Banner = () => {
 
                 </div>
 
-                {/* Clip-path Overlay Mask at Bottom Left */}
-                {/* <svg
-                    className="absolute bottom-0 left-0 w-[160px] h-[100px] z-20"
-                    viewBox="0 0 160 100"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M10,20 L60,20 A10,10 0 0 0 70,10 L70,5 A10,10 0 0 1 80,0 L150,0 A10,10 0 0 1 160,10 L160,90 A10,10 0 0 1 150,100 L0,90 L0,30 L10,20 Z"
-                        fill="#fefaf5"
-                    />
-                </svg> */}
-
                 {/* Button */}
                 <button className="bg-secondary flex items-center gap-2 text-white py-[20px] px-[70px] rounded-[14px] z-30 absolute bottom-0 font-semibold">
                     Try out <VectorWhite stroke='white' />
