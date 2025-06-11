@@ -2,7 +2,7 @@ import Home from '@/icons/Home';
 import Stars from '@/icons/Stars';
 import Style from '@/icons/Style';
 import UploadIcon from '@/icons/Upload';
-import VectorWhite from '@/icons/VectorWhite';
+import VectorDiagonal from '@/icons/VectorDiagonal';
 import Image from 'next/image';
 import React from 'react';
 
@@ -72,7 +72,7 @@ const Banner = () => {
                     </div>
                     {/* Button */}
                     <button className="bg-secondary flex items-center gap-2 text-white py-[20px] px-[70px] rounded-[14px] z-30 absolute bottom-0 font-semibold">
-                        Try out <VectorWhite stroke='white' />
+                        Try out <VectorDiagonal stroke='white' />
                     </button>
                 </div>
             </div>
