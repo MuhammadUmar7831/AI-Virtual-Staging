@@ -1,4 +1,4 @@
-import VectorWhite from '@/icons/VectorWhite'
+import VectorWhite from '@/icons/VectorDiagonal'
 import Image from 'next/image'
 import React from 'react'
 
