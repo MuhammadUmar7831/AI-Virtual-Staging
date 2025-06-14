@@ -20,17 +20,29 @@ const AIResultShowcase = () => {
         },
         {
             type: 'Kitchen',
-            before: '/home/iphone.png',
+            before: '/home/gallery1.jpg',
             after: '/home/client1.jpg',
         },
     ];
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
+        setSliderX(0);
+    }, [selectedRoom])
+
+    useEffect(() => {
+        const handleMove = (clientX: number) => {
             if (!isDragging.current || !containerRef.current) return;
             const rect = containerRef.current.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const x = ((clientX - rect.left) / rect.width) * 100;
             setSliderX(Math.max(0, Math.min(100, x)));
+        };
+
+        const handleMouseMove = (e: MouseEvent) => {
+            handleMove(e.clientX);
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            handleMove(e.touches[0].clientX);
         };
 
         const stopDragging = () => {
@@ -39,17 +51,22 @@ const AIResultShowcase = () => {
 
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseup', stopDragging);
+        window.addEventListener('touchmove', handleTouchMove);
+        window.addEventListener('touchend', stopDragging);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', stopDragging);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', stopDragging);
         };
     }, []);
+
 
     const currentRoom = roomsImages.find((room) => room.type === selectedRoom);
 
     return (
-        <div className="w-full px-6 lg:px-20 3xl:p-16 mt-14">
+        <div className="w-full px-6 lg:px-20 3xl:p-16 mt-14 overflow-hidden">
             <div>
                 <p className="text-center text-[40px] md:text-[80px] font-normal">
                     See results of our AI model
@@ -64,11 +81,10 @@ const AIResultShowcase = () => {
                 {roomTypes.map((room, index) => (
                     <p
                         key={index}
-                        className={`${
-                            room === selectedRoom
-                                ? 'bg-[#2C2F40] px-6 py-[6px] text-white rounded-[15px]'
-                                : ''
-                        } text-[#737373] md:text-[24px] text-[18px] font-normal cursor-pointer`}
+                        className={`${room === selectedRoom
+                            ? 'bg-[#2C2F40] px-6 py-[6px] text-white rounded-[15px]'
+                            : ''
+                            } text-[#737373] md:text-[24px] text-[18px] font-normal cursor-pointer`}
                         onClick={() => {
                             setSelectedRoom(room);
                             setSliderX(100); // Reset to fully show "before" image
@@ -112,8 +128,9 @@ const AIResultShowcase = () => {
                     <div
                         className="h-[100%] w-[4px] bg-white shadow-lg cursor-ew-resize relative z-100"
                         onMouseDown={() => (isDragging.current = true)}
+                        onTouchStart={() => (isDragging.current = true)}
                     >
-                        <button className="absolute top-1/2 left-[-20px] md:left-[-30px] -translate-y-1/2 bg-white px-2 py-[27px] rounded-full shadow-xl flex items-center gap-2 z-100 cursor-pointer">
+                        <button className="absolute top-1/2 left-[-40px] -translate-y-1/2 bg-white px-2 py-[27px] rounded-full shadow-xl flex items-center gap-2 z-100 cursor-pointer">
                             <LeftArrow />
                             <p>Drag</p>
                             <RightArrow />
