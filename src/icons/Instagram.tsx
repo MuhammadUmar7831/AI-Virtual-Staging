@@ -2,7 +2,7 @@ import React from 'react'
 
 const Instagram = () => {
     return (
-        <svg width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg width="43" height="38" viewBox="0 0 43 38" fill="none">
             <rect width="43" height="38" fill="url(#pattern0_47_625)" />
             <defs>
                 <pattern id="pattern0_47_625" patternContentUnits="objectBoundingBox" width="1" height="1">

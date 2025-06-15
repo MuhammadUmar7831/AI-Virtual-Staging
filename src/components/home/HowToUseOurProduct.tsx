@@ -7,23 +7,6 @@ import React, { useEffect, useState } from 'react'
 const HowToUseOurProduct = () => {
     const [num, setNum] = useState(1);
 
-    const data = [
-        {
-            icon: <Signup />,
-            heading: "Sign Up",
-            para: "Get started by signing into your account. You can log in using your email and password or Google, Apple, or social media accounts",
-        },
-        {
-            icon: <Upload2 />,
-            heading: "Upload Image",
-            para: "Upload a room photo, choose the room type and style—our AI handles the rest.",
-        },
-        {
-            icon: <Explore />,
-            heading: "Explore. Save. Enjoy",
-            para: "Preview your AI-generated designs, download your favorites, and start turning your vision into reality"
-        }
-    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -120,3 +103,21 @@ const HowToUseOurProduct = () => {
 };
 
 export default HowToUseOurProduct;
+
+const data = [
+    {
+        icon: <Signup />,
+        heading: "Sign Up",
+        para: "Get started by signing into your account. You can log in using your email and password or Google, Apple, or social media accounts",
+    },
+    {
+        icon: <Upload2 />,
+        heading: "Upload Image",
+        para: "Upload a room photo, choose the room type and style—our AI handles the rest.",
+    },
+    {
+        icon: <Explore />,
+        heading: "Explore. Save. Enjoy",
+        para: "Preview your AI-generated designs, download your favorites, and start turning your vision into reality"
+    }
+];
