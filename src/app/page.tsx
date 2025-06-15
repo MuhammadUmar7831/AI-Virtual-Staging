@@ -1,4 +1,5 @@
 import Banner from "@/components/home/Banner";
+import HowToUseOurProduct from "@/components/home/HowToUseOurProduct";
 import InteractiveDesignBanner from "@/components/home/InteractiveDesignBanner";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import WhyUs from "@/components/home/WhyUs";
@@ -16,6 +17,7 @@ export default function Home() {
       <WhyUs/>
       <AIResultShowcase/>
       <GalleryShowcase/>
+      <HowToUseOurProduct/>
       <WhyChooseUs/>
       <InteractiveDesignBanner/>
       <FAQs/>
