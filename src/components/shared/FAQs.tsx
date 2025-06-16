@@ -60,7 +60,7 @@ const FAQs = () => {
                 {faqData.map((faq) => (
                     <div
                         key={faq.id}
-                        className="border-b border-gray-200 last:border-b-0"
+                        className="border-b-2 border-gray-400"
                     >
                         <button
                             onClick={() => toggleItem(faq.id)}
