@@ -22,7 +22,7 @@ const page = () => {
             </p>
           </div>
           <div className='flex justify-between items-center max-lg:flex-col gap-10 my-17'>
-            <div className='lg:w-[30%] md:w-[80%] w-[90%] bg-[#D6DCFF] min-h-[400px] rounded-[20px] shadow-2xl border-5 border-[#5d6fd306]'>
+            <div className='lg:w-[30%] md:w-[80%] w-[90%] bg-[#D6DCFF] min-h-[470px] rounded-[20px] shadow-2xl border-5 border-[#5d6fd306] flex flex-col justify-between'>
               <div className='m-10'>
                 <h1 className='font-bold text-[28px] md:text-[45px]'>Free</h1>
                 <p className='font-[400] text-[13px] md:text-[20px]'>Trial use</p>
@@ -49,10 +49,19 @@ const page = () => {
                 <VectorDiagonal stroke='black' />
               </Link>
             </div>
-            <div className='lg:w-[70%] md:w-[80%] w-[90%] bg-secondary text-white min-h-[400px] rounded-[20px] shadow-2xl'>
-              <p className='bg-[#D6DCFF] rounded-[10px] text-black text-[10px] p-2 flex justify-center items-center w-[80px] h-[24px] mx-10 my-5'>
-                Most popular
-              </p>
+            <div className='lg:w-[70%] md:w-[80%] w-[90%] bg-secondary text-white min-h-[470px] rounded-[20px] shadow-2xl flex flex-col justify-between'>
+              <div className='flex justify-between relative'>
+                <p className='bg-[#D6DCFF] rounded-[10px] text-black text-[10px] p-2 flex justify-center items-center w-[80px] h-[24px] mx-10 my-5'>
+                  Most popular
+                </p>
+                <div className='bg-[#d6dcffc0] xl:w-[175px] xl:h-[163px] lg:w-[155px] lg:h-[145px] w-[165px] h-[150px] absolute right-[30px] max-sm:w-[100px] max-sm:h-[90px] max-sm:right-[17px] rounded-b-3xl p-2'>
+                  <div className='w-full h-full border-2 border-t-0 border-dashed rounded-b-3xl flex flex-col relative items-center'>
+                    <p className='text-[15px] max-md:text-[10px] text-center pt-2'>Starting from</p>
+                    <p className='text-[50px] max-md:text-[22px] text-center font-bold'>$15</p>
+                    <p className='text-[15px] max-md:text-[10px] text-center absolute bottom-[10px] xl:bottom-[20px]'>per image</p>
+                  </div>
+                </div>
+              </div>
               <div className='mx-10 my-5'>
                 <h1 className='font-bold text-[28px] md:text-[50px]'>Customizable
                 </h1>
@@ -130,8 +139,8 @@ const page = () => {
 
         </div>
       </div>
-      <GalleryShowcase/>
-      <FAQs/>
+      <GalleryShowcase />
+      <FAQs />
       <Footer />
     </>
   )
