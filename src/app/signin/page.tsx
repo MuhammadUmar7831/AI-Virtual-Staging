@@ -42,7 +42,7 @@ const page = () => {
                     src={'/signin.jpg'}
                     fill
                     alt='signin'
-                    className='object-fill'
+                    className='object-fill rounded-l-3xl'
                 />
             </div>
         </div>
