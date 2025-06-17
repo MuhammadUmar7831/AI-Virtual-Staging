@@ -14,9 +14,9 @@ const Header = () => {
                 <Link className="font-normal" href="/gallery">Gallery</Link>
             </nav>
             <div className='gap-5 hidden md:flex'>
-                <button className='font-normal cursor-pointer'>
+                <Link href={'/signin'} className='font-normal cursor-pointer'>
                     Sign in
-                </button>
+                </Link>
                 <button className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal'>
                     Sign up
                 </button>
@@ -54,9 +54,9 @@ const Header = () => {
                     <Link className="font-normal" href="/pricing">Pricing</Link>
                     <Link className="font-normal" href="/gallery">Gallery</Link>
                     <div className="flex flex-col gap-5 justify-center items-center">
-                        <button className='font-normal cursor-pointer'>
+                        <Link href={'/signin'} className='font-normal cursor-pointer'>
                             Sign in
-                        </button>
+                        </Link>
                         <button className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal w-[50%]'>
                             Sign up
                         </button>
