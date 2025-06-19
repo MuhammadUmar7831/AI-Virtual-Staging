@@ -139,7 +139,7 @@ const page = () => {
 
         </div>
       </div>
-      <GalleryShowcase />
+      <GalleryShowcase color='secondary' />
       <FAQs />
       <Footer />
     </>

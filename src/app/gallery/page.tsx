@@ -1,3 +1,4 @@
+import DesignSection from '@/components/gallery/DesignSection'
 import AIResultShowcase from '@/components/shared/AIResultShowcase'
 import Footer from '@/components/shared/Footer'
 import Header from '@/components/shared/Header'
@@ -40,6 +41,7 @@ const page = () => {
 
         </div>
       </div>
+      <DesignSection/>
       <AIResultShowcase />
       <Footer />
     </>

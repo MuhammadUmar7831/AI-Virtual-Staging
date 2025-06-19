@@ -12,7 +12,7 @@ const images = [
     { src: '/home/gallery2.jpg', alt: 'Another Bedroom' },
 ];
 
-export default function GalleryShowcase() {
+export default function GalleryShowcase({color}: {color: string}) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -54,9 +54,9 @@ export default function GalleryShowcase() {
 
     return (
         <>
-            <section className="w-full py-16 bg-secondary overflow-hidden">
+            <section className={`w-full py-16 bg-${color} overflow-hidden`}>
                 <div className="text-center px-4 flex flex-col justify-center items-center">
-                    <h2 className="text-white text-4xl md:text-6xl font-semibold">
+                    <h2 className="text-white text-4xl md:text-[80px] font-[400]">
                         Designs that speak for themselves
                     </h2>
                     <p className="text-white text-lg md:text-2xl mt-4 max-w-3xl mx-auto">
@@ -69,7 +69,7 @@ export default function GalleryShowcase() {
             </section>
             <div
                 ref={containerRef}
-                className="flex overflow-x-auto justify-center items-center gap-5 snap-x snap-mandatory scrollbar-hide bg-secondary p-5"
+                className={`flex overflow-x-auto justify-center items-center gap-5 snap-x snap-mandatory scrollbar-hide bg-${color} p-5`}
             >
                 {images.map((src, index) => {
                     const isActive = index === activeIndex;

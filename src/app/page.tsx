@@ -16,7 +16,7 @@ export default function Home() {
       <Banner/>
       <WhyUs/>
       <AIResultShowcase/>
-      <GalleryShowcase/>
+      <GalleryShowcase color="secondary"/>
       <HowToUseOurProduct/>
       <WhyChooseUs/>
       <InteractiveDesignBanner/>
