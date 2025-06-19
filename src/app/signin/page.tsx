@@ -1,5 +1,6 @@
 import Google from '@/icons/Google'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -33,7 +34,7 @@ const page = () => {
                         <Google/>
                         <p className='text-[#7E8B9E] text-[12.89px] font-medium'>Login with Google</p>
                     </button>
-                    <p className='text-[#4280EF] max-lg:w-full  text-[12.89px] font-medium text-center w-[55%] mt-5'>Don&apos;t have an account? Sign up here</p>
+                    <p className='text-[#4280EF] max-lg:w-full  text-[12.89px] font-medium text-center w-[55%] mt-5'>Don&apos;t have an account? Sign up <Link href={'/signup'} className='border-b-[0.78px]'>here</Link></p>
                 </div>
 
             </div>

@@ -17,9 +17,9 @@ const Header = () => {
                 <Link href={'/signin'} className='font-normal cursor-pointer'>
                     Sign in
                 </Link>
-                <button className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal'>
+                <Link href={'/signup'} className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal'>
                     Sign up
-                </button>
+                </Link>
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -57,9 +57,9 @@ const Header = () => {
                         <Link href={'/signin'} className='font-normal cursor-pointer'>
                             Sign in
                         </Link>
-                        <button className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal w-[50%]'>
+                        <Link href={'/signup'} className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal w-[50%]'>
                             Sign up
-                        </button>
+                        </Link>
                     </div>
                 </nav>
             </aside>
