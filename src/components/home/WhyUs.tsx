@@ -2,10 +2,10 @@ import VectorWhite from '@/icons/VectorDiagonal'
 import Image from 'next/image'
 import React from 'react'
 
+const clients = [
+    "/home/client1.jpg", "/home/client2.jpg", "/home/client3.jpg"
+]
 const WhyUs = () => {
-    const clients = [
-        "/home/client1.jpg", "/home/client2.jpg", "/home/client3.jpg"
-    ]
 
     return (
         <div className="w-full px-6 lg:px-20 3xl:p-16 mt-14">
