@@ -27,10 +27,10 @@ const Banner = () => {
                     <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] flex flex-col lg:flex-row justify-between items-start z-20 gap-8'>
                         {/* Text Block (lower than the card) */}
                         <div className="w-full lg:w-[45%] mt-8 lg:mt-16">
-                            <h1 className='text-white text-[36px] lg:text-[72px] leading-tight font-normal'>
+                            <h1 className='text-white heading leading-tight'>
                                 Design Smarter, Live Better.
                             </h1>
-                            <p className='text-white opacity-80 text-[18px] lg:text-[30px] mt-4'>
+                            <p className='text-white opacity-80 para-1 mt-4'>
                                 Our AI transforms your space with personalized interiors that reflect your style, effortlessly.
                             </p>
                         </div>

@@ -13,11 +13,11 @@ const Header = () => {
                 <Link className="font-normal" href="/pricing">Pricing</Link>
                 <Link className="font-normal" href="/gallery">Gallery</Link>
             </nav>
-            <div className='gap-5 hidden md:flex'>
+            <div className='gap-5 hidden md:flex items-center'>
                 <Link href={'/signin'} className='font-normal cursor-pointer'>
                     Sign in
                 </Link>
-                <Link href={'/signup'} className='bg-secondary text-white p-[10px] px-[20px] rounded-[20px] cursor-pointer font-normal'>
+                <Link href={'/signup'} className='bg-secondary text-white p-[10px] px-[20px] rounded-2xl cursor-pointer font-normal'>
                     Sign up
                 </Link>
             </div>

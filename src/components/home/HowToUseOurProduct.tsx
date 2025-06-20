@@ -13,7 +13,7 @@ const HowToUseOurProduct = () => {
         if (index === 1 && index === hoveredIndex) {
             return "bg-[#615448] text-white"
         } else if (index === hoveredIndex) {
-            return "bg-[#615448] text-white rounded-xl"
+            return "bg-[#615448] text-white"
         } else {
             return "bg-[#E5AA70] text-black"
         }
@@ -47,15 +47,15 @@ const HowToUseOurProduct = () => {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-20 3xl:p-16 mt-14">
             <div>
-                <h1 className="text-center text-[32px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-normal">
+                <h1 className="text-center heading">
                     How to use our product
                 </h1>
-                <p className="text-black opacity-80 text-center text-lg font-normal md:text-[32px] mt-4 max-w-4xl mx-auto">
+                <p className="text-black opacity-80 text-center para-1 mt-4 max-w-4xl mx-auto">
                     Browse our AI-generated interiors and discover how smart design meets stunning aesthetics.
                 </p>
             </div>
 
-            <div className='flex justify-center items-center flex-col lg:w-[60%] w-full mx-auto relative mt-10'>
+            <div className='flex justify-center items-center flex-col lg:w-[60%] w-full mx-auto relative mt-10 rounded-xl overflow-hidden'>
                 {data.map((item, index) => (
                     <div
                         key={index}
@@ -70,8 +70,8 @@ const HowToUseOurProduct = () => {
                             </div>
                         </div>
                         <div className='w-[75%]'>
-                            <h1 className='lg:text-[32px] text-[28px] font-medium'>{item.heading}</h1>
-                            <p className='lg:text-[20px] text-[18px] font-medium'>{item.para}</p>
+                            <h1 className='para-1 font-medium'>{item.heading}</h1>
+                            <p className='para-2 mt-2'>{item.para}</p>
                         </div>
                     </div>
                 ))}

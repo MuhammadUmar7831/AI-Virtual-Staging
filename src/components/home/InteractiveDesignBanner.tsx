@@ -14,7 +14,7 @@ const InteractiveDesignBanner = () => {
                     className="object-cover -z-10 inverted-radius"
                     priority
                 />
-                <div className="flex w-[292px] h-[77px] max-sm:w-[200px] max-sm:h-[60px] rounded-[5px] absolute top-[30%] left-[50%]  z-[100] border-[4px] bg-[rgba(77,77,77,0.3)] gap-5 max-md:gap-2 max-sm:left-[30%] backdrop-blur-[12px] border-[#e1d9d985]">
+                <div className="flex w-[292px] h-[77px] max-sm:w-[200px] max-sm:h-[60px] rounded-[5px] absolute top-[30%] left-[50%] z-10 border-2 bg-[rgba(77,77,77,0.3)] gap-5 max-md:gap-2 max-sm:left-[30%] backdrop-blur-[12px] border-[#e1d9d985]">
                     <div className='w-[40%] h-[100%] relative flex items-center'>
                         <Image
                             src={'/home/wooden-card-img1.jpg'}
@@ -53,8 +53,8 @@ const InteractiveDesignBanner = () => {
                     Transform Your Space Today Try Our AI Designer Now
                 </h1>
             </div>
-            <div className="flex w-[200px] h-[77px] max-sm:w-[170px] max-sm:h-[60px] rounded-[10px] absolute max-lg:top-[70%] max-2xl:top-[65%] top-[78%] right-[10%]  z-[100] border-[4px] bg-[rgba(77,77,77,0.3)] gap-5 max-md:gap-2 max-sm:right-[10%] backdrop-blur-[12px] border-[#e1d9d985]">
-                <div className='w-[30%] h-[100%] relative flex items-center bg-amber-950 rounded-xl'>
+            <div className="flex w-[200px] h-[77px] max-sm:w-[170px] max-sm:h-[60px] rounded-md absolute max-lg:top-[70%] max-2xl:top-[65%] top-[78%] right-[10%]  z-[100] border-2 overflow-hidden bg-[rgba(77,77,77,0.3)] gap-5 max-md:gap-2 max-sm:right-[10%] backdrop-blur-[12px] border-[#e1d9d985]">
+                <div className='w-[30%] h-[100%] relative flex items-center bg-amber-950 rounded-tr-xl rounded-br-xl'>
                 </div>
                 <div className='flex flex-col justify-center text-white'>
                     <h1 className='font-light'>Color</h1>
