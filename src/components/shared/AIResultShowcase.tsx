@@ -93,10 +93,6 @@ const AIResultShowcase = () => {
                 ))}
             </div>
 
-            {/* <BeforeAfterSlider
-                beforeImage='/after.png'
-                afterImage='/before.jpg'
-            /> */}
             <div className='rounded-md overflow-hidden my-8'>
                 <ReactCompareSlider
                     itemOne={<ReactCompareSliderImage src="/after.png" srcSet="/after.png" alt="After" />}
