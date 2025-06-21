@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 const FAQs = () => {
     const [openItems, setOpenItems] = useState(new Set());
@@ -45,26 +44,26 @@ const FAQs = () => {
 
     return (
         <div className="w-full px-6 lg:px-20 3xl:p-16 my-20">
-            <h1 className="text-center text-[32px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-normal">
+            <h1 className="text-center heading">
                 FAQS
             </h1>
-            <div className='flex justify-center items-center gap-4'>
-                <Link href={''} className='font-normal text-[18px] sm:text-[17px] md:text-[20px] text-[#737373]'>
+            <div className='flex justify-center items-center gap-4 mt-4'>
+                <button className='font-normal text-[18px] sm:text-[17px] md:text-[20px] text-[#737373]'>
                     About us
-                </Link>
-                <Link href={''} className='font-normal py-4 px-8 rounded-xl text-[18px] sm:text-[17px] md:text-[20px] bg-secondary text-white'>
+                </button>
+                <button className='font-normal py-4 px-8 rounded-xl text-[18px] sm:text-[17px] md:text-[20px] bg-secondary text-white'>
                     Pricing
-                </Link>
+                </button>
             </div>
             <div className="space-y-4">
                 {faqData.map((faq) => (
                     <div
                         key={faq.id}
-                        className="border-b-2 border-gray-400"
+                        className="border-b border-gray-400"
                     >
                         <button
                             onClick={() => toggleItem(faq.id)}
-                            className="w-full flex items-center justify-between py-6 text-left hover:bg-gray-50 transition-colors duration-200 group"
+                            className="w-full flex items-center justify-between py-6 text-left transition-colors duration-200 group"
                         >
                             <span className="  font-medium lg:text-lg text-[16px] pr-4transition-colors duration-200 lg:mx-5">
                                 {faq.question}
@@ -80,8 +79,8 @@ const FAQs = () => {
 
                         <div
                             className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.has(faq.id)
-                                    ? 'max-h-96 opacity-100 pb-6'
-                                    : 'max-h-0 opacity-0'
+                                ? 'max-h-96 opacity-100 pb-6'
+                                : 'max-h-0 opacity-0'
                                 }`}
                         >
                             <div className="text-black opacity-75 leading-relaxed pr-10 lg:mx-5 lg:text-lg text-[16px">

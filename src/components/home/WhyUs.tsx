@@ -8,9 +8,9 @@ const clients = [
 const WhyUs = () => {
 
     return (
-        <div className="w-full px-6 lg:px-20 3xl:p-16 mt-14">
-            <h1 className='text-center text-[40px] md:text-[80px] font-normal'>Why us?</h1>
-            <p className='text-center text-[20px] md:text-[32px] text-[#000000] opacity-80'>
+        <section className="w-full px-6 lg:px-20 3xl:p-16 mt-14">
+            <h1 className='text-center heading'>Why us?</h1>
+            <p className='text-center para-1 opacity-80 mt-2'>
                 Changing the way the interior design industry works with top-<br className='hidden md:block' />
                 notch AI generation.
             </p>
@@ -25,7 +25,7 @@ const WhyUs = () => {
                             height={478}
                             alt='Iphone'
                         />
-                        <p className='text-center text-white text-[20px] md:text-[32px] font-medium'>
+                        <p className='text-center text-white para-1 font-medium'>
                             Accessibility becomes our strength with our seamless and easy-to-use interface.
                         </p>
                         <button className="bg-white flex items-center gap-2 py-[16px] px-[50px] rounded-[14px] z-30 font-bold cursor-pointer">
@@ -36,18 +36,18 @@ const WhyUs = () => {
 
 
                 {/* Right Card */}
-                <div className='w-full lg:w-[48%] bg-[#D6DCFF] rounded-2xl flex flex-col justify-between'>
-                    <p className='text-[20px] md:text-[32px] font-medium mt-14 mx-[52px] text-center'>
+                <div className='w-full lg:w-[48%] bg-[#D6DCFF] rounded-2xl overflow-hidden flex flex-col justify-between'>
+                    <p className='para-1 font-medium mt-14 mx-[52px] text-center'>
                         Trusted by top-notch interior designers and real estate agents for our high-quality image generation to increase client conversion with
                     </p>
                     <div className='flex justify-center items-center mt-4'>
-                        <div className="flex justify-center items-center rounded-xl border border-dashed border-black px-5 py-2">
+                        <div className="flex justify-center items-center rounded-xl cursor-pointer transition-all group hover:bg-secondary border border-dashed border-black px-5 py-2">
                             {clients.map((url, index) => (
                                 <Image
                                     key={index}
-                                    className='rounded-full -ml-1'
-                                    width={20}
-                                    height={20}
+                                    className='rounded-full -ml-1 border group-hover:border-primary'
+                                    width={30}
+                                    height={30}
                                     src={url}
                                     alt='logo'
                                 />
@@ -65,7 +65,7 @@ const WhyUs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 
