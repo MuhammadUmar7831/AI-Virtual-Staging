@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -21,6 +22,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen`}
       >
+        <Toaster
+          position="bottom-right"
+        />
         {children}
       </body>
     </html>
