@@ -2,9 +2,11 @@
 import Google from '@/icons/Google'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 const Signup = () => {
+    const router = useRouter();
     const [otp, setOtp] = useState(['', '', '', '']);
     const [timer, setTimer] = useState(300);
     const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -66,7 +68,10 @@ const Signup = () => {
     const handleVerify = () => {
         const code = otp.join('');
         console.log('Entered OTP:', code);
+        
         // Add verification logic
+
+        router.push('/dashboard')
     };
 
     const handleResend = () => {

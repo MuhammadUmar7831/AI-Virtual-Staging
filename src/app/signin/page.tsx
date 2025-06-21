@@ -1,9 +1,15 @@
+'use client'
 import Google from '@/icons/Google'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
+    const router = useRouter();
+    const handleLogin = () => {
+        router.push('/dashboard');
+    }
     return (
         <div className='flex w-full'>
             <div className='2xl:w-[55%] w-[65%] max-lg:w-full max-lg:items-center px-20 max-lg:px-0 pt-5 min-h-[110vh] flex flex-col '>
@@ -22,7 +28,7 @@ const page = () => {
                             <input className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full  bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="password" placeholder='*********' />
                         </div>
                     </div>
-                    <button className='bg-[#2C2F40] w-[55%] max-lg:w-full  text-white p-3 rounded-[5.89px] cursor-pointer'>
+                    <button onClick={handleLogin} className='bg-[#2C2F40] w-[55%] max-lg:w-full  text-white p-3 rounded-[5.89px] cursor-pointer'>
                         Login
                     </button>
                     <div className='flex w-[55%] justify-center items-center gap-0.5 my-5 max-lg:w-full '>
@@ -50,4 +56,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
