@@ -1,67 +1,25 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
 const AIResultShowcase = () => {
     const [selectedRoom, setSelectedRoom] = useState<string>('Lounge');
-    const [sliderX, setSliderX] = useState(0);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const isDragging = useRef(false);
 
     const roomTypes = ['Kitchen', 'Lounge', 'Bedroom', 'Living Room'];
 
-    const roomsImages = [
-        {
-            type: 'Lounge',
-            before: '/home/before-lounge.jpg',
-            after: '/home/after-lounge.jpg',
-        },
-        {
-            type: 'Kitchen',
-            before: '/home/gallery1.jpg',
-            after: '/home/client1.jpg',
-        },
-    ];
+    // const roomsImages = [
+    //     {
+    //         type: 'Lounge',
+    //         before: '/home/before-lounge.jpg',
+    //         after: '/home/after-lounge.jpg',
+    //     },
+    //     {
+    //         type: 'Kitchen',
+    //         before: '/home/gallery1.jpg',
+    //         after: '/home/client1.jpg',
+    //     },
+    // ];
 
-    useEffect(() => {
-        setSliderX(0);
-    }, [selectedRoom])
-
-    useEffect(() => {
-        const handleMove = (clientX: number) => {
-            if (!isDragging.current || !containerRef.current) return;
-            const rect = containerRef.current.getBoundingClientRect();
-            const x = ((clientX - rect.left) / rect.width) * 100;
-            setSliderX(Math.max(0, Math.min(100, x)));
-        };
-
-        const handleMouseMove = (e: MouseEvent) => {
-            handleMove(e.clientX);
-        };
-
-        const handleTouchMove = (e: TouchEvent) => {
-            handleMove(e.touches[0].clientX);
-        };
-
-        const stopDragging = () => {
-            isDragging.current = false;
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseup', stopDragging);
-        window.addEventListener('touchmove', handleTouchMove);
-        window.addEventListener('touchend', stopDragging);
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('mouseup', stopDragging);
-            window.removeEventListener('touchmove', handleTouchMove);
-            window.removeEventListener('touchend', stopDragging);
-        };
-    }, []);
-
-
-    const currentRoom = roomsImages.find((room) => room.type === selectedRoom);
 
     return (
         <div className="w-full px-6 lg:px-20 3xl:p-16 mt-14 overflow-hidden">
@@ -85,7 +43,6 @@ const AIResultShowcase = () => {
                             } text-[#737373] md:text-lg cursor-pointer rounded-xl transition-all px-6 py-1.5`}
                         onClick={() => {
                             setSelectedRoom(room);
-                            setSliderX(100); 
                         }}
                     >
                         {room}
