@@ -33,7 +33,7 @@ const HowToUseOurProduct = () => {
             para: "Get started by signing into your account. You can log in using your email and password or Google, Apple, or social media accounts",
         },
         {
-            icon: <Upload2 />,
+            icon: <Upload2 width={54} height={40} />,
             heading: "Upload Image",
             para: "Upload a room photo, choose the room type and style—our AI handles the rest.",
         },

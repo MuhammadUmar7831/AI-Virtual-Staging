@@ -1,11 +1,14 @@
+
 "use client"
 import { googleAuthApiCall, signinApiCall } from '@/api/auth'
+
 import Google from '@/icons/Google'
 import { auth, googleProvider } from '@/lib/firebase'
 import { signInWithPopup } from 'firebase/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+
 import React, { FormEvent, useState } from 'react'
 
 const Page = () => {
@@ -35,6 +38,7 @@ const Page = () => {
             router.push("/dashboard")
         }
     }
+
 
     return (
         <div className='flex w-full'>
@@ -66,9 +70,11 @@ const Page = () => {
                             />
                         </div>
                     </div>
+
                     <button
                         type='submit'
                         className='bg-[#2C2F40] w-[55%] max-lg:w-full  text-white p-3 rounded-[5.89px] cursor-pointer'>
+
                         Login
                     </button>
                     <div className='flex w-[55%] justify-center items-center gap-0.5 my-5 max-lg:w-full '>
