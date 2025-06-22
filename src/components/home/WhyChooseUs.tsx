@@ -43,7 +43,7 @@ const WhyChooseUs = () => {
 
     return (
         <section className="w-full px-4 sm:px-6 lg:px-20 3xl:p-16 mt-14">
-            <h1 className="text-center text-[32px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-normal">
+            <h1 className="text-center heading">
                 Why choose us?
             </h1>
 
