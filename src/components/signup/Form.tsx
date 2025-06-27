@@ -55,7 +55,7 @@ const Form = (props: Props) => {
           <p className='text-[#323A46] text-[13px] font-bold'>You name</p>
           <input value={userData.name} onChange={(e) => setUserData({
             ...userData, name: e.target.value
-          })} className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="email" placeholder='individual' />
+          })} className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="text" placeholder='individual' />
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-[#323A46] text-[13px] font-bold'>Email</p>
