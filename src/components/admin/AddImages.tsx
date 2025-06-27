@@ -2,26 +2,43 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+// import { getAllUserApiCall } from '@/api/admin';
+
+
+// const COLLECTION_BASE = 'admin'
+
 
 
 const dummyUsers = [
-    { id: 1, name: 'Ahmad Raza', email: 'ahmadraza@gmail.com' },
-    { id: 2, name: 'Zain Khan', email: 'zainkhan@gmail.com' },
-    { id: 3, name: 'Muhammad Umar', email: 'muhammadumar@gmail.com' },
-    { id: 4, name: 'Daniyal Waseem', email: 'daniyalwaseem@gmail.com' },
-];
+    {
+        "_id": "685e8808c772c52def9ca3a8",
+        "name": "ahmad",
+        "email": "ahmaddev477@gmail.com",
+        "balance": 0.0
+    },
+]
 
 const AddImages = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedUserId, setSelectedUserId] = useState<null | number>(null);
+    const [selectedUserId, setSelectedUserId] = useState<string>('');
     const [imageCount, setImageCount] = useState<string>('');
     const [error, setError] = useState('');
+
+    // const [users, setUsers] = useState({});
 
     const filteredUsers = dummyUsers.filter(user =>
         user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const handleAddImages = (userId: number) => {
+    // useEffect(() => {
+    //     const fetchAllUsers = async () => {
+    //         const data = await getAllUserApiCall();
+    //         console.log(data);
+    //     }
+    //     fetchAllUsers();
+    // }, [])
+
+    const handleAddImages = (userId: string) => {
         if (Number(imageCount) < 1) {
             setError("Number must be greater than 0")
             return;
@@ -29,11 +46,10 @@ const AddImages = () => {
         setError("");
         console.log(`Added ${imageCount} images for user ID ${userId}`);
         setImageCount('');
-        // setSelectedUserId(null);
     };
 
     return (
-        <div className='w-full relative shadow-lg h-[85vh] p-4 rounded-xl bg-[#F0F0F0] mt-6 '>
+        <div className='w-full relative shadow-lg h-[95vh] p-4 rounded-xl bg-[#F0F0F0] mt-6 '>
             <div className=" mx-auto p-4   h-full flex flex-col customize-border1">
                 {/* Search Bar */}
                 <div className="sticky top-0 z-10">
@@ -52,11 +68,11 @@ const AddImages = () => {
                 {/* Scrollable User List */}
                 <div className="overflow-y-auto flex-1 space-y-4 pr-2">
                     {filteredUsers.map((user) => (
-                        <div key={user.id} className="border border-[#2F2F2F66] rounded-md p-4 shadow-sm hover:shadow-md transition-all duration-700">
+                        <div key={user._id} className="border border-[#2F2F2F66] rounded-md p-4 shadow-sm hover:shadow-md transition-all duration-700">
                             <div
                                 className="flex sm:items-center sm:justify-between cursor-pointer max-sm:flex-col justify-center gap-2"
                                 onClick={() =>
-                                    selectedUserId === user.id ? setSelectedUserId(null) : setSelectedUserId(user.id)
+                                    selectedUserId === user._id ? setSelectedUserId('') : setSelectedUserId(user._id)
                                 }
                             >
                                 <div className="flex items-center space-x-3 max-[500px]:flex-col">
@@ -77,12 +93,12 @@ const AddImages = () => {
                                     </div>
                                 </div>
                                 <span onClick={() => { setError(''); setImageCount("1"); }} className="text-md text-gray-600 bg-gradient-to-r from-[#e0e0e1] to-[#D6DCFF] p-2 rounded-xl text-center">
-                                    {selectedUserId === user.id ? 'Hide' : 'Add Images'}
+                                    {selectedUserId === user._id ? 'Hide' : 'Add Images'}
                                 </span>
                             </div>
 
                             <AnimatePresence initial={false}>
-                                {selectedUserId === user.id && (
+                                {selectedUserId === user._id && (
                                     <motion.div
                                         className=""
                                         key="input-area"
@@ -102,7 +118,7 @@ const AddImages = () => {
                                             />
                                             <button
                                                 className="bg-gradient-to-r from-[#2C2F40] to-[#D6DCFF] py-2 px-10 text-white rounded-lg font-bold shadow-lg hover:opacity-90 flex justify-center items-center cursor-pointer text-2xl max-sm:px-5 max-sm:text-sm max-sm:w-full"
-                                                onClick={() => handleAddImages(user.id)}
+                                                onClick={() => handleAddImages(user._id)}
                                             >
                                                 Add
                                             </button>
