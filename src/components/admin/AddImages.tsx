@@ -1,13 +1,8 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { getAllUserApiCall } from '@/api/admin';
-
-
-// const COLLECTION_BASE = 'admin'
-
-
+import { getAllUserApiCall } from '@/api/admin';
 
 const dummyUsers = [
     {
@@ -24,19 +19,17 @@ const AddImages = () => {
     const [imageCount, setImageCount] = useState<string>('');
     const [error, setError] = useState('');
 
-    // const [users, setUsers] = useState({});
-
-    const filteredUsers = dummyUsers.filter(user =>
+    const filteredUsers = dummyUsers.filter(user => // use useMemo with users (state to store all users from api) for optimization
         user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // useEffect(() => {
-    //     const fetchAllUsers = async () => {
-    //         const data = await getAllUserApiCall();
-    //         console.log(data);
-    //     }
-    //     fetchAllUsers();
-    // }, [])
+    useEffect(() => {
+        const fetchAllUsers = async () => {
+            const data = await getAllUserApiCall();
+            console.log(data);
+        }
+        fetchAllUsers();
+    }, [])
 
     const handleAddImages = (userId: string) => {
         if (Number(imageCount) < 1) {
