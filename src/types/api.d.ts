@@ -29,7 +29,12 @@ interface GoogleAuthBody {
 }
 
 interface User {
+  _id: string;
   name: string;
   email: string;
-  role: Role
+  balance: number;
 };
+
+interface Balance {
+  balance: number;
+}
