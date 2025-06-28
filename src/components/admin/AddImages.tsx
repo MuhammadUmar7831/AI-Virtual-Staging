@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { addBalanceApiCall, getAllUserApiCall } from '@/api/admin';
 import CustomSkeleton from '../CustomSkeleton';
 
-interface fetchedUserType {
+interface FetchedUserType {
     _id: string;
     name: string;
     email: string;
@@ -17,7 +17,7 @@ const AddImages = () => {
     const [selectedUserId, setSelectedUserId] = useState<string>('');
     const [imageCount, setImageCount] = useState<string>('');
     const [error, setError] = useState('');
-    const [usersData, setUsersData] = useState<fetchedUserType[]>([]);
+    const [usersData, setUsersData] = useState<FetchedUserType[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const filteredUsers = useMemo(() => {
@@ -30,8 +30,7 @@ const AddImages = () => {
         const fetchAllUsers = async () => {
             const data = await getAllUserApiCall();
             if (data) {
-                console.log(data.data);
-                setUsersData(Array.isArray(data.data) ? data.data : [data.data]);
+                setUsersData(data.data);
                 setIsLoading(false);
             }
         }
@@ -44,10 +43,8 @@ const AddImages = () => {
             return;
         }
         setError("");
-        console.log(`Added ${imageCount} images for user ID ${userId}`);
         const balance = Number(imageCount) * 15;
-        const res = await addBalanceApiCall(userId, { balance: balance });
-        console.log(res);
+        await addBalanceApiCall(userId, { balance: balance });
         setImageCount('');
     };
 

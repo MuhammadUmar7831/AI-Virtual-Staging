@@ -35,6 +35,6 @@ interface User {
   balance: number;
 };
 
-interface Balance {
+interface AddBalanceBody {
   balance: number;
 }
