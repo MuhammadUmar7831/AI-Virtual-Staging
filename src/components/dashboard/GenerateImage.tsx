@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import DownArrow from '@/icons/DownArrow';
 import SparklingWhite from '@/icons/SparklingWhite';
 import Upload2 from '@/icons/Upload2';
-import axios from 'axios'
+import axios from '@/api/axios'
 
 const areaOptions = [
     'Master Bedroom',
@@ -64,19 +64,13 @@ const GenerateImage = () => {
             setLoading(true);
 
             // Step 1: Get Presigned URL
-            const presignRes = await fetch('https://ai-vs-backend.vercel.app/generate/presign-url', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    filename: imageFile.name,
-                    prefix: 'input/',
-                }),
-            });
+            const presignRes = await axios.post('https://ai-vs-backend.vercel.app/generate/presign-url', {
+                filename: imageFile.name,
+                prefix: 'input/',
+            })
 
-            const presignData = await presignRes.json();
-            const { upload_url, public_url, content_type } = presignData.data;
+            console.log('✅ Presigned URL response:', presignRes.data);
+            const { upload_url, public_url, content_type } = presignRes.data.data;
 
             // Step 2: Upload image using fetch PUT
             const uploadRes = await fetch(upload_url, {
@@ -92,19 +86,13 @@ const GenerateImage = () => {
             }
 
             // Step 3: Call generate endpoint
-            const generateRes = await fetch('https://ai-vs-backend.vercel.app/generate/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    image_url: public_url,
-                    room_type: selectedArea,
-                    style: selectedStyle,
-                }),
+            const generateRes = await axios.post('https://ai-vs-backend.vercel.app/generate/', {
+                image_url: public_url,
+                space: selectedArea,
+                style: selectedStyle,
             });
 
-            const result = await generateRes.json();
+            const result = generateRes;
             console.log('✅ Generation result:', result);
             alert('Image generated successfully!');
         } catch (error: any) {
