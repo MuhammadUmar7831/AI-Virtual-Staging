@@ -4,6 +4,7 @@ import DownArrow from '@/icons/DownArrow';
 import SparklingWhite from '@/icons/SparklingWhite';
 import Upload2 from '@/icons/Upload2';
 import axios from '@/api/axios'
+import Image from 'next/image';
 
 const areaOptions = [
     'Master Bedroom',
@@ -95,9 +96,9 @@ const GenerateImage = () => {
             const result = generateRes;
             console.log('✅ Generation result:', result);
             alert('Image generated successfully!');
-        } catch (error: any) {
+        } catch (error) {
             console.error('❌ Upload or generate error:', error);
-            alert(error?.message || 'Something went wrong.');
+            alert(error || 'Something went wrong.');
         } finally {
             setLoading(false);
         }
@@ -133,7 +134,7 @@ const GenerateImage = () => {
 
                 {previewUrl && (
                     <div className="mt-4 flex justify-center">
-                        <img src={previewUrl} alt="Preview" className="max-h-64 rounded-xl" />
+                        <Image src={previewUrl} alt="Preview" className="max-h-64 rounded-xl" />
                     </div>
                 )}
             </div>

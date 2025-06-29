@@ -1,8 +1,12 @@
 interface ApiResponse<T = undefined> {
   status: "error" | "success",
   message: string,
+  role: Role,
   data: T
 }
+
+type Role = 'customer' | 'admin'
+
 
 interface SignInBody {
   email: string;
@@ -25,6 +29,12 @@ interface GoogleAuthBody {
 }
 
 interface User {
+  _id: string;
   name: string;
   email: string;
+  balance: number;
 };
+
+interface AddBalanceBody {
+  balance: number;
+}
