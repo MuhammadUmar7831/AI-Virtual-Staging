@@ -49,3 +49,7 @@ interface GenerateImageBody {
   result: string;
   public_url : string;
 }
+
+interface CheckoutBody {
+  url: string;
+}
