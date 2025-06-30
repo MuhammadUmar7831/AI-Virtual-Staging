@@ -76,7 +76,7 @@ const Layout = ({ children }: LayoutProps) => {
                         >
                             <SparklingWhite />
                             {!collapsed && <span className="flex-1">Generate</span>}
-                            {!collapsed && isGenerate && <ArrowRight size={12} />}
+                            {!collapsed && (isGenerate) && <ArrowRight size={12} />}
                         </Link>
 
                         {/* Gallery */}
