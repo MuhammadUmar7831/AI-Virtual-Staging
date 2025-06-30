@@ -32,7 +32,7 @@ export async function generateImageApiCall(imageFile: File, selectedArea: string
 
         const result = generateRes;
 
-        return {result, public_url};
+        return result;
     } catch (error) {
         console.error(error)
         return false;

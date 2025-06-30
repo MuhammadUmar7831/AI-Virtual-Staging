@@ -70,7 +70,7 @@ const GenerateImage = () => {
 
         if (res) {
             toast.success("Image Generated Successfully");
-            setGeneratedImageUrl(res.public_url);
+            setGeneratedImageUrl(res.data.data.result);
             setIsGenerated(true);
             return;
         }
