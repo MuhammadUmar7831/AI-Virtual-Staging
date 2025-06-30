@@ -38,3 +38,14 @@ interface User {
 interface AddBalanceBody {
   balance: number;
 }
+
+interface PresignedUrl {
+  upload_url: string;
+  public_url: string;
+  content_type: string;
+}
+
+interface GenerateImageBody {
+  result: string;
+  public_url : string;
+}
