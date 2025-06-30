@@ -127,7 +127,7 @@ const page = () => {
                 <h1 className='text-white lg:text-[80px] md:text-[60px] text-[40px] text-center mx-40 max-xl:mx-10'>Bring your home to life.
                   The future of interior
                   design is here.</h1>
-                <Link href={''} className=' bg-white rounded-2xl h-[80px] flex justify-center items-center mb-5 mx-2 gap-2 px-15 max-lg:px-10'>
+                <Link href={'/pricing/checkout'} className=' bg-white rounded-2xl h-[80px] flex justify-center items-center mb-5 mx-2 gap-2 px-15 max-lg:px-10'>
                   <p className='text-[15px] md:text-[22px] font-[500] flex justify-center items-center'>
                     Buy plan now
                   </p>
