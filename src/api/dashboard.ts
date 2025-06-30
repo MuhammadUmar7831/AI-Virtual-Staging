@@ -8,8 +8,6 @@ export async function generateImageApiCall(imageFile: File, selectedArea: string
             filename: imageFile.name,
             prefix: 'input/',
         })
-
-        console.log('✅ Presigned URL response:', presignRes.data);
         const { upload_url, public_url, content_type } = presignRes.data.data;
 
         // Step 2: Upload image using fetch PUT
@@ -31,8 +29,6 @@ export async function generateImageApiCall(imageFile: File, selectedArea: string
             space: selectedArea,
             style: selectedStyle,
         });
-
-        console.log("GENERATE RES", generateRes);
 
         const result = generateRes;
 

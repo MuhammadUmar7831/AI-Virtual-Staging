@@ -43,7 +43,6 @@ const GenerateImage = () => {
     const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("IN HANDLE IMAGE");
         const file = e.target.files?.[0];
         if (!file) return;
 
@@ -66,27 +65,19 @@ const GenerateImage = () => {
             return;
         }
 
-        try {
-            setLoading(true);
-            console.log("IMAGE FILE", imageFile);
-            const res = await generateImageApiCall(imageFile, selectedArea, selectedStyle);
+        setLoading(true);
+        const res = await generateImageApiCall(imageFile, selectedArea, selectedStyle);
 
-            if (res) {
-                toast.success("Image Generated Successfully");
-                setGeneratedImageUrl(res.public_url);
-                setIsGenerated(true);
-                return;
-            }
-
-            toast.error("Failed to generate image");
-
-
-        } catch (error) {
-            console.error('❌ Upload or generate error:', error);
-            alert(error || 'Something went wrong.');
-        } finally {
-            setLoading(false);
+        if (res) {
+            toast.success("Image Generated Successfully");
+            setGeneratedImageUrl(res.public_url);
+            setIsGenerated(true);
+            return;
         }
+
+        toast.error("Failed to generate image");
+
+        setLoading(false);
     };
 
 
