@@ -53,3 +53,9 @@ interface GenerateImageBody {
 interface CheckoutBody {
   url: string;
 }
+
+interface CheckoutSessionBody {
+  amount: number;
+  images: number;
+  session_id: string;
+}

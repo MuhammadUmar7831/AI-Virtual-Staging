@@ -17,3 +17,13 @@ export async function checkoutApiCall(imageCount: number) {
         return false;
     }
 }
+
+export async function getCheckoutDetailsApiCall(session_id: string) {
+    try {
+        const res = await axios.get<ApiResponse<CheckoutSessionBody>>(`/payment/get-session-amount/${session_id}`);
+        return res;
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}
