@@ -18,7 +18,7 @@ const CheckoutSuccess = () => {
                     const data = await getCheckoutDetailsApiCall(sessionId);
                     if (data) {
                         setIsLoading(false);
-                        setVal(String(data.data.data.images));
+                        setVal(String(data.data.images));
                     }
                 }
             }

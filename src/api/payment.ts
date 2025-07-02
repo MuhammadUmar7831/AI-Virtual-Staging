@@ -20,8 +20,8 @@ export async function checkoutApiCall(imageCount: number) {
 
 export async function getCheckoutDetailsApiCall(session_id: string) {
     try {
-        const res = await axios.get<ApiResponse<CheckoutSessionBody>>(`/payment/get-session-amount/${session_id}`);
-        return res;
+        const res = await axios.get<ApiResponse<CheckoutSessionResponse>>(`/payment/get-session-amount/${session_id}`);
+        return res.data;
     } catch (error) {
         console.error(error)
         return false

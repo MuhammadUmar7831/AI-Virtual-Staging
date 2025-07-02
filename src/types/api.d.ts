@@ -54,7 +54,7 @@ interface CheckoutBody {
   url: string;
 }
 
-interface CheckoutSessionBody {
+interface CheckoutSessionResponse {
   amount: number;
   images: number;
   session_id: string;
