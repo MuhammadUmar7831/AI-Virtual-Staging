@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode } from 'react'
 import Image from 'next/image'
 import PrivateRoute from '@/components/PrivateRoute'
 import SideBar from '@/components/admin/SideBar'
