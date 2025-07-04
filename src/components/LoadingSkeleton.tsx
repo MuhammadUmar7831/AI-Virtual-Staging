@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const CustomSkeleton = () => {
+const LoadingSkeleton = () => {
   const skeletonCount = 5;
 
   return (
@@ -33,4 +33,4 @@ const CustomSkeleton = () => {
   );
 };
 
-export default CustomSkeleton;
+export default LoadingSkeleton;

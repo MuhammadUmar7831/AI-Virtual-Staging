@@ -33,6 +33,7 @@ interface User {
   name: string;
   email: string;
   balance: number;
+  role: Role;
 };
 
 interface AddBalanceBody {

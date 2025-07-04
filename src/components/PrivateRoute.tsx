@@ -1,38 +1,59 @@
-'use client';
+'use client'
 
-import { useRouter } from 'next/navigation';
-import { getUserApiCall } from '@/api/user';
-import { useUserStore } from '@/lib/store';
-import { ReactNode, useEffect, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation'
+import { getUserApiCall } from '@/api/user'
+import { useUserStore } from '@/lib/store'
+import { ReactNode, useEffect, useState } from 'react'
 
 interface PrivateRouteProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export default function PrivateRoute({ children }: PrivateRouteProps) {
-  const { user, setUser } = useUserStore();
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  const { user, setUser } = useUserStore()
+  const [checked, setChecked] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await getUserApiCall();
-      if (res) {
-        setUser(res.data);
-      } else {
-        router.push('/signin');
+    const verifyUser = async () => {
+      try {
+        const res = await getUserApiCall()
+        if (!res) {
+          router.push('/signin')
+          return
+        }
+
+        const fetchedUser = res.data
+        setUser(fetchedUser)
+
+        if (fetchedUser.role === 'admin' && !pathname.startsWith('/admin')) {
+          router.push('/admin')
+        } else if (fetchedUser.role === 'customer' && !pathname.startsWith('/dashboard')) {
+          router.push('/dashboard')
+        } else {
+          setChecked(true)
+        }
+      } catch (error) {
+        console.error(error)
+        router.push('/signin')
       }
-      setLoading(false);
-    };
+    }
 
     if (!user) {
-      fetchUser();
+      verifyUser()
     } else {
-      setLoading(false);
+      if (user.role === 'admin' && !pathname.startsWith('/admin')) {
+        router.push('/admin')
+      } else if (user.role === 'customer' && !pathname.startsWith('/dashboard')) {
+        router.push('/dashboard')
+      } else {
+        setChecked(true)
+      }
     }
-  }, [user, setUser, router]);
+  }, [user, pathname, router, setUser])
 
-  if (loading) return <div className="p-4">Loading...</div>;
+  if (!checked) return <div className="p-4">Loading...</div>
 
-  return children;
+  return children
 }
