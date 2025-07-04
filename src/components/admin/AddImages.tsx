@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { addBalanceApiCall, getAllUserApiCall } from '@/api/admin';
-import CustomSkeleton from '../CustomSkeleton';
+import CustomSkeleton from '../LoadingSkeleton';
 
 interface FetchedUserType {
     _id: string;
