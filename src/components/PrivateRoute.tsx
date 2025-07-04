@@ -51,7 +51,7 @@ export default function PrivateRoute({ children }: PrivateRouteProps) {
         setChecked(true)
       }
     }
-  }, [user, pathname, router, setUser])
+  }, [])
 
   if (!checked) return <div className="p-4">Loading...</div>
 
