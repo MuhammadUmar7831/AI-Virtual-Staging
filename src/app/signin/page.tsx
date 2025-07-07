@@ -14,11 +14,11 @@ const Page = () => {
     const [data, setData] = useState<SignInBody>({ email: '', password: '' });
     const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
     const [showHidePassword, setShowHidePassword] = useState<'text' | 'password'>('password');
-    const [loading,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const validateForm = () => {
-        let newErrors: { email?: string; password?: string } = {};
+        const newErrors: { email?: string; password?: string } = {};
 
         if (!data.email.trim()) {
             newErrors.email = 'Email is required';
@@ -125,7 +125,7 @@ const Page = () => {
                         className='bg-[#2C2F40] w-[55%] max-lg:w-full text-white p-3 rounded-[5.89px] cursor-pointer'
                     >
                         {
-                            loading ? <BeatLoader color='white'/> : "Login"
+                            loading ? <BeatLoader color='white' /> : "Login"
                         }
                     </button>
 
