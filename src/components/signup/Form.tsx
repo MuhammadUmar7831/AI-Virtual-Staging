@@ -3,6 +3,7 @@ import { googleAuthApiCall, signupApiCall } from '@/api/auth'
 import Google from '@/icons/Google'
 import { auth, googleProvider } from '@/lib/firebase'
 import { signInWithPopup } from 'firebase/auth'
+import { Check, Eye, EyeOff, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useState } from 'react'
@@ -19,6 +20,13 @@ const Form = (props: Props) => {
   });
   const router = useRouter()
   const [error, setError] = useState("")
+  const [isUpperCase, setIsUpperCase] = useState(false);
+  const [isLowerCase, setIsLowerCase] = useState(false);
+  const [isNumber, setIsNumber] = useState(false);
+  const [isSpecialCharacter, setIsSpecialCharacter] = useState(false);
+  const [isAtLeast8, setIsAtLeast8] = useState(false);
+
+  const [showHidePassword, setShowHidePassword] = useState("password");
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault()
@@ -27,11 +35,53 @@ const Form = (props: Props) => {
       return;
     }
 
+    if (!isUpperCase || !isLowerCase || !isNumber || !isSpecialCharacter || !isAtLeast8) {
+      return false;
+    }
+
     const res = await signupApiCall(userData);
 
     if (res) {
       props.next({ token: res.data.token, user: userData })
 
+    }
+  }
+
+  const passwordValidator = (password: string) => {
+
+    const hasNumber = /\d/.test(password);
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < 8) {
+      setIsAtLeast8(false)
+    } else {
+      setIsAtLeast8(true)
+    }
+
+    if (hasNumber) {
+      setIsNumber(true)
+    } else {
+      setIsNumber(false)
+    }
+
+    if (hasLowercase) {
+      setIsLowerCase(true)
+    } else {
+      setIsLowerCase(false)
+    }
+
+    if (hasUppercase) {
+      setIsUpperCase(true)
+    } else {
+      setIsUpperCase(false)
+    }
+
+    if (hasSpecialChar) {
+      setIsSpecialCharacter(true)
+    } else {
+      setIsSpecialCharacter(false)
     }
   }
 
@@ -50,7 +100,7 @@ const Form = (props: Props) => {
   return (
     <form onSubmit={handleSignup} className='mt-20 max-lg:w-[60%] max-sm:w-[80%]'>
       <h1 className='text-[40px] md:text-[80px] font-normal mb-20'>Sign up</h1>
-      <div className='flex flex-col gap-5 mb-10'>
+      <div className='flex flex-col gap-5 mb-5'>
         <div className='flex flex-col gap-1'>
           <p className='text-[#323A46] text-[13px] font-bold'>You name</p>
           <input value={userData.name} onChange={(e) => setUserData({
@@ -63,9 +113,36 @@ const Form = (props: Props) => {
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-[#323A46] text-[13px] font-bold'>Password</p>
-          <input value={userData.password} onChange={(e) => setUserData({
-            ...userData, password: e.target.value
-          })} required className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full  bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="password" placeholder='*********' />
+          <div className='relative w-[55%] max-lg:w-full flex justify-center items-center'>
+            <input
+              value={userData.password}
+              onChange={(e) => {
+                setUserData({
+                  ...userData,
+                  password: e.target.value
+                });
+                passwordValidator(e.target.value);
+              }}
+              required
+              className='p-2 border-[0.74px] rounded-[5.89px] w-full   bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none'
+              type={showHidePassword}
+              placeholder='*********'
+            />
+            <div className='absolute cursor-pointer my-auto right-3' onClick={() => (showHidePassword === "password" ? setShowHidePassword("text") : setShowHidePassword("password"))}>
+              {
+                showHidePassword === 'password' ? (<Eye size={30} color='#3e4042' />) : (<EyeOff size={30} color='#3e4042' />)
+              }
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <p>Follows the following guidelines for the password</p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isUpperCase ? <Check size={15} /> : <X size={15} />)}  At least 1 Uppercase letter</p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isLowerCase ? <Check size={15} /> : <X size={15} />)} At least 1 Lowercase letter</p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isNumber ? <Check size={15} /> : <X size={15} />)} At least 1 Number</p>
+          <p className='flex text-sm text-[gray] items-center gap-1' > {userData.password && (isSpecialCharacter ? <Check size={15} /> : <X size={15} />)} At least 1 Special character e.g. {'[!@#$%^&*(),.?\":{}|<>]'} </p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isAtLeast8 ? <Check size={15} /> : <X size={15} />)} 8 characters or more </p>
         </div>
         <div>{error}</div>
       </div>
