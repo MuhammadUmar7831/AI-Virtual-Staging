@@ -20,11 +20,19 @@ const Form = (props: Props) => {
   });
   const router = useRouter()
   const [error, setError] = useState("")
-  const [isUpperCase, setIsUpperCase] = useState(false);
-  const [isLowerCase, setIsLowerCase] = useState(false);
-  const [isNumber, setIsNumber] = useState(false);
-  const [isSpecialCharacter, setIsSpecialCharacter] = useState(false);
-  const [isAtLeast8, setIsAtLeast8] = useState(false);
+  // const [isUpperCase, setIsUpperCase] = useState(false);
+  // const [isLowerCase, setIsLowerCase] = useState(false);
+  // const [isNumber, setIsNumber] = useState(false);
+  // const [isSpecialCharacter, setIsSpecialCharacter] = useState(false);
+  // const [isAtLeast8, setIsAtLeast8] = useState(false);
+
+  const [passwordValidations, setPasswordValidations] = useState({
+    isUpperCase: false,
+    isLowerCase: false,
+    isNumber: false,
+    isSpecialCharacter: false,
+    isAtLeast8: false
+  })
 
   const [showHidePassword, setShowHidePassword] = useState("password");
 
@@ -35,7 +43,7 @@ const Form = (props: Props) => {
       return;
     }
 
-    if (!isUpperCase || !isLowerCase || !isNumber || !isSpecialCharacter || !isAtLeast8) {
+    if (!passwordValidations.isUpperCase || !passwordValidations.isLowerCase || !passwordValidations.isNumber || !passwordValidations.isSpecialCharacter || !passwordValidations.isAtLeast8) {
       return false;
     }
 
@@ -47,43 +55,23 @@ const Form = (props: Props) => {
     }
   }
 
-  const passwordValidator = (password: string) => {
 
+  const passwordValidator = (password: string) => {
     const hasNumber = /\d/.test(password);
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const isAtLeast8 = password.length >= 8;
 
-    if (password.length < 8) {
-      setIsAtLeast8(false)
-    } else {
-      setIsAtLeast8(true)
-    }
+    setPasswordValidations({
+      isUpperCase: hasUppercase,
+      isLowerCase: hasLowercase,
+      isNumber: hasNumber,
+      isSpecialCharacter: hasSpecialChar,
+      isAtLeast8
+    });
+  };
 
-    if (hasNumber) {
-      setIsNumber(true)
-    } else {
-      setIsNumber(false)
-    }
-
-    if (hasLowercase) {
-      setIsLowerCase(true)
-    } else {
-      setIsLowerCase(false)
-    }
-
-    if (hasUppercase) {
-      setIsUpperCase(true)
-    } else {
-      setIsUpperCase(false)
-    }
-
-    if (hasSpecialChar) {
-      setIsSpecialCharacter(true)
-    } else {
-      setIsSpecialCharacter(false)
-    }
-  }
 
   async function handleGoogleClick() {
     const result = await signInWithPopup(auth, googleProvider);
@@ -138,11 +126,11 @@ const Form = (props: Props) => {
         </div>
         <div>
           <p>Follows the following guidelines for the password</p>
-          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isUpperCase ? <Check size={15} /> : <X size={15} />)}  At least 1 Uppercase letter</p>
-          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isLowerCase ? <Check size={15} /> : <X size={15} />)} At least 1 Lowercase letter</p>
-          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isNumber ? <Check size={15} /> : <X size={15} />)} At least 1 Number</p>
-          <p className='flex text-sm text-[gray] items-center gap-1' > {userData.password && (isSpecialCharacter ? <Check size={15} /> : <X size={15} />)} At least 1 Special character e.g. {'[!@#$%^&*(),.?\":{}|<>]'} </p>
-          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (isAtLeast8 ? <Check size={15} /> : <X size={15} />)} 8 characters or more </p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (passwordValidations.isUpperCase ? <Check size={15} /> : <X size={15} />)}  At least 1 Uppercase letter</p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (passwordValidations.isLowerCase ? <Check size={15} /> : <X size={15} />)} At least 1 Lowercase letter</p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (passwordValidations.isNumber ? <Check size={15} /> : <X size={15} />)} At least 1 Number</p>
+          <p className='flex text-sm text-[gray] items-center gap-1' > {userData.password && (passwordValidations.isSpecialCharacter ? <Check size={15} /> : <X size={15} />)} At least 1 Special character e.g. {'[!@#$%^&*(),.?\":{}|<>]'} </p>
+          <p className='flex text-sm text-[gray] items-center gap-1'> {userData.password && (passwordValidations.isAtLeast8 ? <Check size={15} /> : <X size={15} />)} 8 characters or more </p>
         </div>
         <div>{error}</div>
       </div>
