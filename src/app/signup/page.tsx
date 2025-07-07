@@ -21,7 +21,7 @@ const Page = () => {
                             setToken(token)
                         }} />
                     ) : (
-                        <OTP token={token} user={user}/>
+                        <OTP token={token} user={user} />
                     )
                 }
 

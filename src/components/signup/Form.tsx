@@ -7,6 +7,7 @@ import { Check, Eye, EyeOff, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useState } from 'react'
+import { BeatLoader } from 'react-spinners'
 
 interface Props {
   next: ({ token, user }: { token: string, user: SignUpBody }) => void
@@ -20,11 +21,8 @@ const Form = (props: Props) => {
   });
   const router = useRouter()
   const [error, setError] = useState("")
-  // const [isUpperCase, setIsUpperCase] = useState(false);
-  // const [isLowerCase, setIsLowerCase] = useState(false);
-  // const [isNumber, setIsNumber] = useState(false);
-  // const [isSpecialCharacter, setIsSpecialCharacter] = useState(false);
-  // const [isAtLeast8, setIsAtLeast8] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const [passwordValidations, setPasswordValidations] = useState({
     isUpperCase: false,
@@ -38,12 +36,15 @@ const Form = (props: Props) => {
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault()
+    setLoading(true);
     if (!userData.email || !userData.name || !userData.password) {
       setError("All fields are required");
+      setLoading(false);
       return;
     }
 
     if (!passwordValidations.isUpperCase || !passwordValidations.isLowerCase || !passwordValidations.isNumber || !passwordValidations.isSpecialCharacter || !passwordValidations.isAtLeast8) {
+      setLoading(false)
       return false;
     }
 
@@ -51,8 +52,8 @@ const Form = (props: Props) => {
 
     if (res) {
       props.next({ token: res.data.token, user: userData })
-
     }
+    setLoading(false)
   }
 
 
@@ -93,11 +94,11 @@ const Form = (props: Props) => {
           <p className='text-[#323A46] text-[13px] font-bold'>You name</p>
           <input value={userData.name} onChange={(e) => setUserData({
             ...userData, name: e.target.value
-          })} className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="text" placeholder='individual' />
+          })} className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full font-semibold bg-primary text-[#1c1d1d] border-[#CBD1D8]  outline-none' type="text" placeholder='individual' />
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-[#323A46] text-[13px] font-bold'>Email</p>
-          <input value={userData.email} onChange={(e) => setUserData({ ...userData, email: e.target.value })} required className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none' type="email" placeholder='commitcommunity@gmail.com' />
+          <input value={userData.email} onChange={(e) => setUserData({ ...userData, email: e.target.value })} required className='p-2 border-[0.74px] rounded-[5.89px] w-[55%] max-lg:w-full font-semibold bg-primary text-[#1c1d1d] border-[#CBD1D8] outline-none' type="email" placeholder='commitcommunity@gmail.com' />
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-[#323A46] text-[13px] font-bold'>Password</p>
@@ -112,7 +113,7 @@ const Form = (props: Props) => {
                 passwordValidator(e.target.value);
               }}
               required
-              className='p-2 border-[0.74px] rounded-[5.89px] w-full   bg-[#FAFAFC] border-[#CBD1D8] text-[#8d9093] outline-none'
+              className='p-2 border-[0.74px] rounded-[5.89px] w-full font-semibold bg-primary text-[#1c1d1d] border-[#CBD1D8] outline-none'
               type={showHidePassword}
               placeholder='*********'
             />
@@ -135,7 +136,9 @@ const Form = (props: Props) => {
         <div>{error}</div>
       </div>
       <button type='submit' className='bg-[#2C2F40] w-[55%] max-lg:w-full  text-white p-3 rounded-[5.89px] cursor-pointer'>
-        Sign up
+        {
+          loading ? <BeatLoader color='white' /> : "Sign up"
+        }
       </button>
       <div className='flex w-[55%] justify-center items-center gap-0.5 my-5 max-lg:w-full '>
         <div className='w-[50%] h-[0.1px] bg-[#7E8B9E]'></div>
