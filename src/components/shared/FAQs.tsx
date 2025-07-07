@@ -1,4 +1,5 @@
 'use client'
+import { Minus, Plus } from 'lucide-react';
 import React, { useState } from 'react';
 
 const FAQs = () => {
@@ -68,11 +69,12 @@ const FAQs = () => {
                             <span className="  font-medium lg:text-lg text-[16px] pr-4transition-colors duration-200 lg:mx-5">
                                 {faq.question}
                             </span>
-                            <div className="flex-shrink-0 ml-4 text-3xl cursor-pointer">
+                            <div className="cursor-pointer">
                                 {openItems.has(faq.id) ? (
-                                    "-"
+                                    <Minus size={25}/>
                                 ) : (
-                                    "+"
+                                    <Plus size={25}/>
+                                    
                                 )}
                             </div>
                         </button>
